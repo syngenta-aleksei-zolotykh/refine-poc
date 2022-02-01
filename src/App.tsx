@@ -1,28 +1,22 @@
-import { Refine } from '@pankod/refine';
+import {Refine} from '@pankod/refine';
 import routerProvider from '@pankod/refine-react-router';
 
 import 'styles/antd.less';
 import simpleRestDataProvider from '@pankod/refine-simple-rest';
-import { authProvider } from 'authProvider';
-import { PostList, PostCreate, PostEdit, PostShow } from 'pages/posts';
+import {authProvider} from 'authProvider';
+import {Title} from 'components/Title';
+import {resources} from "./resources";
 
 function App() {
-    const API_URL = 'https://api.fake-rest.refine.dev';
-    const dataProvider = simpleRestDataProvider(API_URL);
-    return (
-        <Refine
-            routerProvider={routerProvider}
-            dataProvider={dataProvider}
-            authProvider={authProvider}
-            resources={[
-                {
-                    name: 'posts',
-                    list: PostList,
-                    create: PostCreate,
-                    edit: PostEdit,
-                    show: PostShow,
-                },
-            ]}
+  const API_URL = 'https://api.fake-rest.refine.dev';
+  const dataProvider = simpleRestDataProvider(API_URL);
+  return (
+    <Refine
+  Title={Title}
+  routerProvider={routerProvider}
+  dataProvider={dataProvider}
+  authProvider={authProvider}
+  resources={resources}
         ></Refine>
     );
 }
